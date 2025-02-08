@@ -13,13 +13,13 @@ import {ReactiveFormsModule} from "@angular/forms";
   declarations: [
     FavoriteComponent,
     InfoComponent,
-    OrdersComponent
+    OrdersComponent,
   ],
   imports: [
     CommonModule,
     PersonalRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-  ]
+  ],
 })
 export class PersonalModule { }

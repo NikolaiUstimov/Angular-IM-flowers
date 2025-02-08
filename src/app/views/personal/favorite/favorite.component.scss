@@ -66,8 +66,15 @@
           color: $gray-text-color;
         }
 
+        .favorite-product-action {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+
         .favorite-product-action button {
           width: 160px;
+          margin-bottom: 10px;
         }
 
         .favorite-product-remove {
