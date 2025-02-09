@@ -23,6 +23,7 @@ export class DetailComponent implements OnInit {
   product!: ProductType;
   serverStaticPath = environment.serverStaticPath;
   count: number = 1;
+  isLogged: boolean = false;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -54,7 +55,9 @@ export class DetailComponent implements OnInit {
               private authService: AuthService,
               private cartService: CartService,
               private favoriteService: FavoriteService,
-              private _snackBar: MatSnackBar,) { }
+              private _snackBar: MatSnackBar,) {
+    this.isLogged = this.authService.getIsLoggedIn();
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {

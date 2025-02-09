@@ -1,6 +1,7 @@
 <div class="product-card" *ngIf="product" (click)="navigate()"
      [class.is-light]="isLight">
-  <figure class="product-card-favorite" *ngIf="!isLight" (click)="updateFavorite()">
+  <div *ngIf="isLogged">
+    <figure class="product-card-favorite" *ngIf="!isLight" (click)="updateFavorite()">
     <span *ngIf="product.isInFavorite">
       <svg width="20" height="18" viewBox="0 0 20 18" fill="none"
            xmlns="http://www.w3.org/2000/svg">
@@ -12,14 +13,16 @@
           fill="#B6D5B9"/>
       </svg>
     </span>
-    <span *ngIf="!product.isInFavorite">
+      <span *ngIf="!product.isInFavorite">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M10.9997 19.8457C10.7155 19.8457 10.4405 19.8091 10.2113 19.7266C6.70967 18.5257 1.14551 14.2632 1.14551 7.96572C1.14551 4.75739 3.73967 2.15405 6.92967 2.15405C8.47884 2.15405 9.92717 2.75905 10.9997 3.84072C12.0722 2.75905 13.5205 2.15405 15.0697 2.15405C18.2597 2.15405 20.8538 4.76655 20.8538 7.96572C20.8538 14.2724 15.2897 18.5257 11.788 19.7266C11.5588 19.8091 11.2838 19.8457 10.9997 19.8457ZM6.92967 3.52905C4.50051 3.52905 2.52051 5.51822 2.52051 7.96572C2.52051 14.2266 8.54301 17.7099 10.6605 18.4341C10.8255 18.4891 11.183 18.4891 11.348 18.4341C13.4563 17.7099 19.488 14.2357 19.488 7.96572C19.488 5.51822 17.508 3.52905 15.0788 3.52905C13.6855 3.52905 12.393 4.17989 11.5588 5.30739C11.3022 5.65572 10.7155 5.65572 10.4588 5.30739C9.60634 4.17072 8.32301 3.52905 6.92967 3.52905Z"
           fill="#383838"/>
       </svg>
     </span>
-  </figure>
+    </figure>
+  </div>
+
   <div class="product-card-image" style="background-image: url({{serverStaticPath + product.image}});"></div>
   <p class="product-card-name">{{product.name}}</p>
   <div class="product-card-info" *ngIf="!isLight">

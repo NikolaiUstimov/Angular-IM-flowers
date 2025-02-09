@@ -45,7 +45,7 @@ export class CatalogComponent implements OnInit {
               private cartService: CartService,
               private authService: AuthService,
               private favoriteService: FavoriteService,
-              private router: Router) { }
+              private router: Router) {}
 
   ngOnInit(): void {
     //Запрос на получение каталога выполняем в запросе на получение товаров корзины
