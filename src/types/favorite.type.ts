@@ -6,4 +6,5 @@ export type FavoriteType = {
   price: number,
   quantity?: number,
   countInCart?: number,
+  inCart?: boolean,
 }

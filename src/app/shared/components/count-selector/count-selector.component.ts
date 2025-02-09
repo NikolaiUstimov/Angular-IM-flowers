@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class CountSelectorComponent implements OnInit {
 
-  @Input() count:number = 1;
+  @Input() count: number = 1;
 
   @Output() onCountChange: EventEmitter<number> = new EventEmitter<number>();
 
