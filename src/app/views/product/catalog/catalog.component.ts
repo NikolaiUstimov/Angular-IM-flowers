@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductService} from "../../../shared/services/product.service";
 import {ProductType} from "../../../../types/product.type";
 import {CategoryService} from "../../../shared/services/category.service";
@@ -200,6 +200,18 @@ export class CatalogComponent implements OnInit {
     this.sortingOpen = !this.sortingOpen;
   }
 
+  @HostListener('document:click', ['$event']) clickOut(event: Event) {
+    if (this.sortingOpen && !(event.target as HTMLInputElement).closest('.catalog-sorting')) {
+      this.sortingOpen = false;
+    }
+  }
+
+  @HostListener('document:keydown', ['$event']) keyDownOut(event: KeyboardEvent) {
+    if (this.sortingOpen && event.key === 'Escape') {
+      this.sortingOpen = false;
+    }
+  }
+
   sort(value: string): void {
     this.activeParams.sort = value;
     this.router.navigate(['/catalog'], {
@@ -225,6 +237,9 @@ export class CatalogComponent implements OnInit {
   }
 
   openNextPage(): void {
+    if (!this.activeParams.page) {
+      this.activeParams.page = 1;
+    }
     if (this.activeParams.page && this.activeParams.page < this.pages.length) {
       this.activeParams.page++;
 
